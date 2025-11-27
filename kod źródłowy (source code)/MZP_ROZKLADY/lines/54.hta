@@ -1,0 +1,322 @@
+
+<html>
+<head>
+  <title>MZP APP - Linia nr. 54</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta charset="utf-8">
+  <HTA:APPLICATION
+    ID="MojaAplikacja"
+    APPLICATIONNAME="Moja Aplikacja"
+    BORDER="thin"
+    CAPTION="yes"
+    SHOWINTASKBAR="yes"
+    SINGLEINSTANCE="yes"
+    WINDOWSTATE="normal"
+  >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="font/css/fontello.css">
+    <style type="text/css">
+
+      @media print {
+    #bck-btn {
+      display: none;
+    }
+
+    #stop-table-one {
+      display: block !important;
+    }
+
+    #stop-table-two {
+      display: block !important;
+    }
+
+ .side-stop {
+  display: none !important;
+ }
+
+ 
+  }
+
+body {
+  background-color: #13131a;
+  color:#d3d3d3;
+  font-family: Lato;
+  margin:0;
+  overflow:none;
+}
+
+#linenmbr {
+  display: flex;
+  align-items: center;
+  background-color: #d3d3d3;
+  color:#13131a;
+  font-size: 24px;
+}
+
+i {
+  font-style: normal;
+}
+
+#bck-btn {
+  background-color: #20202c;
+  color:#d3d3d3;
+  cursor:pointer;
+}
+
+#bck-btn:hover {
+  font-size: 30px;
+  transition:ease 500ms;
+}
+
+.direction, .directionH {
+ background-color: #242431;
+color:#d3d3d3;
+display: flex;
+align-items: center;
+cursor:pointer;
+-ms-user-select: none; 
+user-select: none;
+border-bottom:1px solid #d3d3d3;
+}
+
+.direction:hover .dirtext, .directionH:hover .dirtext {
+  font-size: 18px;
+  transition: ease 500ms;
+}
+
+#stop-table-one {
+  display: flex;
+  align-items: center;
+  border-top:0;
+}
+
+.stop-element {
+  border-bottom:1.5px solid #d3d3d3;
+  padding: 0.3%;
+  background-color: #272733 !important;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.first-stop-element {
+  border-bottom:1.5px solid #d3d3d3;
+  background-color: #a34040;
+    padding: 0.3%;
+    cursor: pointer;
+    font-weight: 500;
+      display: flex;
+  align-items: center;
+}
+
+.last-stop-element {
+  background-color: #1d0a75;
+    padding: 0.3%;
+    cursor: pointer;
+    font-weight: 500;
+      display: flex;
+  align-items: center;
+}
+
+ul, li {
+  list-style-type: none;
+  margin:auto;
+  padding:0;
+  cursor: pointer;
+  -ms-user-select: none;
+  user-select: none;
+   background-color: #242431;
+}
+
+.side-stop {
+padding-left: 16px;
+}
+
+.side-stop::before {
+  content: "‎ 🡾 ‎";
+}
+
+
+ul li::before {
+  content:"‎ 🢃 ‎";
+}
+ul li {
+border-bottom: 1px solid #d3d3d3;
+padding: 0.5%;
+}
+
+ul li:last-of-type {
+  border-bottom: 0;
+}
+
+ul li:hover {
+  font-size: 17px;
+  transition: ease 500ms;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+
+
+    </style>
+
+    
+
+<script language="javascript">
+  function setwindow() {
+         var szerokosc = 319;
+         var wysokosc = 586;
+         window.resizeTo(szerokosc, wysokosc);
+         window.moveTo(
+             (screen.availWidth - szerokosc) / 2,
+             (screen.availHeight - wysokosc) / 2
+         );
+     }
+
+     function enforceWindowSize() {
+         var szerokosc = 319;
+         var wysokosc = 586;
+
+         if (window.outerWidth !== szerokosc || window.outerHeight !== wysokosc) {
+             window.resizeTo(szerokosc, wysokosc);
+             window.moveTo(
+                 (screen.availWidth - szerokosc) / 2,
+                 (screen.availHeight - wysokosc) / 2
+             );
+         }
+     }
+
+     function showtable() {
+      var firsttable = document.getElementById("stop-table-one")
+      if (firsttable.style.display === "none") {
+        firsttable.style.display = "block"
+      } else {
+        firsttable.style.display = "none"
+      }
+     }
+
+     function showtabletwo() {
+      var firsttable = document.getElementById("stop-table-two")
+      if (firsttable.style.display === "none") {
+        firsttable.style.display = "block"
+      } else {
+        firsttable.style.display = "none"
+      }
+     }
+
+       function showtablethree() {
+      var firsttable = document.getElementById("stop-table-three")
+      if (firsttable.style.display === "none") {
+        firsttable.style.display = "block"
+      } else {
+        firsttable.style.display = "none"
+      }
+     }
+     
+
+     setInterval(enforceWindowSize, 200);
+</script>
+
+<script language="javascript">
+function runFile(p) {
+    var sh = new ActiveXObject("WScript.Shell");
+    sh.Run(p);
+}
+
+
+
+function runTimetable(relativeJsonPath) {
+    var sh = new ActiveXObject("WScript.Shell");
+
+    // katalog, w którym znajduje się 9.hta
+    var basePath = unescape(location.pathname)
+        .replace(/\//g,"\\")
+        .replace(/^\\([A-Za-z]:)/,"$1")
+        .replace(/[^\\]*$/,"");
+
+    // pełna ścieżka do timetable.hta
+    var timetablePath = basePath + "timetable.hta";
+
+    // pełna ścieżka do pliku JSON (na podstawie tego, co podasz w onclick)
+    var jsonPath = basePath + relativeJsonPath;
+
+    // składamy końcową komendę
+    var cmd = 'mshta.exe "' + timetablePath + '?plik=' + jsonPath + '"';
+
+    // odpalamy
+    sh.Run(cmd, 1, false);
+}
+
+</script>
+
+
+</head>
+<body onload="enforceWindowSize(); setwindow()">
+<div id="linenmbr">
+  <i onclick="window.close()" id="bck-btn" class="icon-level-up"></i>
+  <i class="icon-bus"><a>Linia 54</a></i>
+</div>
+‎ ‎ 
+<div id="tableone">
+<div onclick="showtable()" class="direction"><i class="icon-right-open"><strong><a>Kier.</a></strong> <a class="dirtext">Kozanów</a></i></div>
+<div style="display:none;" id="stop-table-one">
+<ul>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s1.json')">Szpital Uniwersytecki <a>[<i class="icon-hospital"></i>]</a></li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s2.json')">Piekarska</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s3.json')">Politechnika <a>[<i class="icon-graduation-cap"></i>]</a></li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s4.json')">Rondo Solidarności</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s5.json')">Opolska</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s6.json')">Śródmieście <a>[<i class="icon-building-filled"></i>]</a></li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s7.json')">Al. Jana Pawła II</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s8.json')">Dw. Główny <a>[<i class="icon-train"></i>]</a></li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s9.json')">Warszawska</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s10.json')">Os. XXX-Lecia</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s11.json')">Rynek Główny <a>[<i class="icon-shop"></i>]</a></li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s12.json')">Karłowicza</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s13.json')">Różewicza</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s14.json')">Herberta</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s15.json')">Lindego</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Kozanow\\s16.json')">Kozanów</li>
+</ul>
+</div>
+
+</div>
+‎ ‎ 
+<div onclick="showtabletwo()" class="direction"><i class="icon-right-open"><strong><a>Kier.</a></strong> <a class="dirtext">Szpital Uniwersytecki <a>[<i class="icon-hospital"></i>]</a></a></i></div>
+<div style="display:none;" id="stop-table-two">
+<ul>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s1.json')">Kozanów</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s2.json')">Lindego</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s3.json')">Herberta</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s4.json')">Różewicza</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s5.json')">Karłowicza</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s6.json')">Rynek Główny <a>[<i class="icon-shop"></i>]</a></li>
+  <li class="side-stop" onclick="runTimetable('\\DB\\L_54\\x\\s1.json')">Blachownia</li>
+  <li class="side-stop" onclick="runTimetable('\\DB\\L_54\\x\\s2.json')">Blachownia PKP <a>[<i class="icon-train"></i>]</a></li>
+  <li class="side-stop" onclick="runTimetable('\\DB\\L_54\\x\\s3.json')">Warszawska</li>
+  <li class="side-stop" onclick="runTimetable('\\DB\\L_54\\x\\s4.json')">Mrożka (S)</li>
+  <li class="side-stop" onclick="runTimetable('\\DB\\L_54\\x\\s5.json')">Zaj. Autobusowa</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s7.json')">Os. XXX-Lecia</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s8.json')">Warszawska</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s9.json')">Dworzec Główny <a>[<i class="icon-train"></i>]</a></li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s10.json')">Al. Jana Pawła II</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s11.json')">Śródmieście <a>[<i class="icon-building-filled"></i>]</a></li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s12.json')">Opolska</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s13.json')">Rondo Solidarności</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s14.json')">Politechnika <a>[<i class="icon-graduation-cap"></i>]</a></li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s15.json')">Piekarska</li>
+  <li onclick="runTimetable('\\DB\\L_54\\Szpital\\s16.json')">Szpital Uniwersytecki <a>[<i class="icon-hospital"></i>]</a></li>
+
+</ul>
+</div>
+‎ ‎ 
+
+</body>
+</html>

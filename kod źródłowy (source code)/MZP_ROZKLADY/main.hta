@@ -1,0 +1,355 @@
+
+<html>
+<head>
+  <title>MZP APP - Wybierz Rozkład</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta charset="utf-8">
+  <HTA:APPLICATION
+    ID="mzpapp"
+    ICON="logo.ico"
+    APPLICATIONNAME="MZP APP"
+    BORDER="thin"
+    CAPTION="yes"
+    SHOWINTASKBAR="yes"
+    SINGLEINSTANCE="yes"
+    WINDOWSTATE="normal"
+  >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resources/font/css/fontello.css">
+<script language="javascript">
+     function setwindow() {
+            var szerokosc = 1006;
+            var wysokosc = 518;
+            window.resizeTo(szerokosc, wysokosc);
+            window.moveTo(
+                (screen.availWidth - szerokosc) / 2,
+                (screen.availHeight - wysokosc) / 2
+            );
+        }
+
+        function enforceWindowSize() {
+            var szerokosc = 1006;
+            var wysokosc = 518;
+
+            if (window.outerWidth !== szerokosc || window.outerHeight !== wysokosc) {
+                window.resizeTo(szerokosc, wysokosc);
+                window.moveTo(
+                    (screen.availWidth - szerokosc) / 2,
+                    (screen.availHeight - wysokosc) / 2
+                );
+            }
+        }
+
+
+        
+        setInterval(enforceWindowSize, 200);
+</script>
+
+<script language="javascript">
+  document.oncontextmenu = function() {
+    return false;
+};
+
+function runFile(p) {
+    var sh = new ActiveXObject("WScript.Shell");
+    sh.Run(p);
+}
+
+function loadMsg() {
+    // Adres JSONa
+    var url = "https://piraxu.github.io/Mzp.App/Popup_alert.json?nocache=" + Date.now();
+
+    try {
+        var xhr = new ActiveXObject("MSXML2.XMLHTTP");
+        xhr.open("GET", url, false);
+
+        // Anty-cache
+        xhr.setRequestHeader("Cache-Control", "no-cache");
+        xhr.setRequestHeader("Pragma", "no-cache");
+
+        xhr.send();
+
+        if (xhr.status == 200) {
+            var data = JSON.parse(xhr.responseText);
+
+            // zakładam że JSON ma {"message": "tekst"}
+            if (data.content && data.content.trim() !== "") {
+                document.getElementById("msg").innerText = data.content;
+                document.getElementById("msg").style.display = "block";
+            }
+        }
+    }
+    catch (e) {
+        // nic nie rób jeśli błąd
+    }
+}
+
+function Msgdetect() {
+  var mcontent=document.getElementById("msg")
+  var Wrp=document.getElementById("wrapper")
+  var popup_win=document.getElementById("popup-window")
+    if (mcontent.innerHTML==="") {
+      Wrp.style.opacity = 1
+      popup_win.style.display = "none"
+    } else {
+      Wrp.style.opacity = 0.2
+      popup_win.style.display = "fixed"
+    }
+      
+    
+}
+
+function cPopup() {
+    var Wrp=document.getElementById("wrapper")
+  var popup_win=document.getElementById("popup-window")
+  
+  popup_win.style.display= "none"
+  Wrp.style.opacity=1
+}
+</script>
+
+
+
+    <style type="text/css">
+body {
+  background-color: #13131a;
+  color:#d3d3d3;
+  font-family: Lato;
+  margin:0;
+  overflow: hidden;
+}
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  height: 100%;
+}
+
+#side_menu {
+  background-color: #1b1b24;
+  color:#13131a;
+  width: 23%;
+  height: 486px;
+}
+
+#textlogo {
+display: block;
+margin:auto;
+text-align: center;
+background-color: #2b2b35;
+color:#ffffff;
+font-family: Verdana;
+border-top: 5px solid #1b1b24;
+border-bottom: 5px solid #1b1b24;
+width: 80%;
+padding: 1%;
+}
+
+#company-shortcut {
+  text-transform: uppercase;
+  font-size: 24px;
+    text-shadow: 2px 3px #201c1c;
+
+}
+
+#company-city {
+  font-size: 18px;
+   text-shadow: 2px 3px #201c1c;
+}
+
+#list-menu {
+  margin-top:auto;
+  margin-bottom: auto;
+  font-family: lato;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-top:2px solid #1b1b24;
+  cursor:pointer;
+}
+
+.menu-button {
+  padding: 4%;
+  border-bottom: 2px solid #2c2c3b;
+  background-color: #242431;
+  color:#d3d3d3;
+}
+
+.menu-button:first-of-type {
+  border-top:2px solid #2c2c3b;
+}
+
+#content{
+  border-left: 2px solid #d3d3d3;
+  width: 78%;
+  padding: 1%;
+}
+
+#chooser-container {
+width: 100%;
+}
+
+.chooser-header {
+  background-color: #d3d3d3;
+  color:#13131a;
+  width: 37%;
+  margin-left: -1.5%;
+}
+
+.universal-line-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin:0;
+  padding: 0;
+}
+
+.line-element {
+     display: -ms-flexbox;        
+  -ms-flex-pack: center;       
+  -ms-flex-align: center;      
+  justify-content: center;
+  align-items: center;
+  margin-top:2px;
+  margin-right: 4px;
+  border:1px solid #d3d3d3;
+  width: 40px;
+  height: 22px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3;
+  border-radius: 6px;
+  font-weight: 700;
+  font-family: "Fira Sans";
+  cursor: pointer;
+}
+
+
+
+.line-element:hover {
+background-color: #d3d3d3;
+color: #13131a;
+transition: all 1s;
+text-decoration:underline;
+font-size: 20px;
+}
+
+
+
+
+.line-element:last-of-type {
+  margin-right: 0px;
+}
+
+#trams #buses #nights #fast {
+  width: 100%;
+}
+
+#popup-window {
+z-index: 99;
+  position: fixed;      /* pozycja zależy od okna, nie od DIVa */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* perfekcyjne centrowanie */
+  background-color: #d3d3d3;
+  width: 50%;
+  color:#13131a;
+  padding: 0.5%;
+  border-radius: 12px;
+-ms-user-select: none; 
+user-select: none;
+}
+
+#popup_close_btn {
+  background-color: #13131a;
+  color:#d3d3d3;
+  width: 40%;
+  margin:auto;
+  padding: 0.5%;
+  border-radius: 12px;
+  text-align: center;
+  cursor:pointer;
+}
+
+#msg {
+  border:10px solid #d3d3d3;
+}
+
+
+    </style>
+
+</head>
+<body onload="enforceWindowSize(); setwindow(); loadMsg(); Msgdetect()">
+<div style="opacity: 0.3;" id="wrapper">
+  <div id="side_menu">
+<div id="textlogo"><a id="company-shortcut">mzp</a> <a id="company-city">Ostrołęka</a></div>
+<ul id="list-menu">
+  <li class="menu-button" onclick='(new ActiveXObject("WScript.Shell"))
+    .Run("cmd.exe /c start \"\" \"%CD%\\resources\\discord.cmd\"", 0, false)'>
+    Serwer discord
+</li>
+
+<li class="menu-button" onclick='(new ActiveXObject("WScript.Shell"))
+    .Run("cmd.exe /c start explorer.exe \"%CD%\"", 0, false)'>
+    Otwórz Gł. Katalog Aplikacji
+</li>
+
+<li class="menu-button" onclick='(new ActiveXObject("WScript.Shell"))
+    .Run("cmd.exe /c start \"\" \"%CD%\\resources\\updscript.cmd\"", 0, false)'>
+    Otwórz skrypt aktualizacji
+</li>
+
+<li class="menu-button" onclick='(new ActiveXObject("WScript.Shell"))
+    .Run("cmd.exe /c start \"\" \"%CD%\\info.hta\"", 0, false)'>
+    Informacje o aplikacji
+</li>
+
+<li class="menu-button" onclick="window.close()">
+    Wyjdź
+</li>
+</ul>
+  </div>
+  <div id="content">
+  <div id="chooser-containter">
+<div id="trams">
+  <h3 class="chooser-header"><i class="icon-train"></i>Tramwaje:</h3>
+  <ul class="universal-line-list">
+   <li onclick="runFile('lines\\9.hta')" class="line-element">9</li>
+  </ul>
+</div>
+<div id="buses">
+  <h3 class="chooser-header"><i class="icon-bus"></i>Autobusy:</h3>
+   <ul class="universal-line-list">
+     <li onclick="runFile('lines\\54.hta')" class="line-element">54</li>
+  </ul>
+</div>
+<div style="display: none;" id="nights">
+  <h3 class="chooser-header"><i class="icon-moon-inv"></i>Autobusy Nocne:</h3>
+  <ul class="universal-line-list">
+  
+  </ul>
+</div>
+<div style="display: none;" id="fast">
+  <h3 class="chooser-header"><i class="icon-gauge"></i>Autobusy Pospieszne:</h3>
+  <ul class="universal-line-list">
+   
+  </ul>
+</div>
+  </div>
+  </div>
+</div>
+<div id="popup-window">
+    <h3 style="margin: auto; border-bottom: 1px solid #13131a; padding: 0.2%;"><i class="icon-info-circled"></i>Informacja:</h3>
+    <span id="msg"></span>
+    <div onclick="cPopup()" id="popup_close_btn"><i class="icon-cancel-circled"></i><a>Zamknij informację</a></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<html>
+<head>
+    <title>Rozk³ad jazdy</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+   <HTA:APPLICATION
+    ID="RozkladApp"
+    APPLICATIONNAME="Rozk³ad HTA"
+    BORDER="thin"
+    BORDERSTYLE="normal"
+    CAPTION="yes"
+    SHOWINTASKBAR="yes"
+    SINGLEINSTANCE="yes"
+    SYSMENU="yes"
+    MAXIMIZEBUTTON="no"
+/>
+
+    <script language="javascript">
+        if (!window.JSON) window.JSON = {};
+        if (typeof JSON.parse !== "function") {
+            JSON.parse = function (sJSON) {
+                return eval("(" + sJSON + ")");
+            };
+        }
+
+        function pobierzParametr(nazwa) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (decodeURIComponent(pair[0]) === nazwa) {
+                    return decodeURIComponent(pair[1]);
+                }
+            }
+            return null;
+        }
+
+        function wczytajDane() {
+            try {
+                var sciezka = pobierzParametr("plik");
+                if (!sciezka) {
+                    alert("Nie podano parametru ?plik=œcie¿ka_do_json");
+                    return;
+                }
+
+                var stream = new ActiveXObject("ADODB.Stream");
+                stream.Type = 2;
+                stream.Charset = "utf-8";
+                stream.Open();
+                stream.LoadFromFile(sciezka);
+                var zawartosc = stream.ReadText();
+                stream.Close();
+
+                var dane = JSON.parse(zawartosc);
+                document.getElementById("nmbr").innerHTML = dane.line;
+                document.getElementById("direction-text").innerHTML = "Kierunek: "+dane.direction;
+                document.getElementById("stop").innerHTML = dane.przystanek;
+              
+                var tabelaHTML = "<table border='1' cellspacing='0' cellpadding='5'><tr><th>Godzina</th><th>Minuty</th></tr>";
+                var godziny = [];
+                for (var godz in dane.rozk³ad) godziny.push(godz);
+                godziny.sort(function (a, b) { return parseInt(a) - parseInt(b); });
+
+                for (var i = 0; i < godziny.length; i++) {
+                    var godzina = godziny[i];
+                    var minuty = dane.rozk³ad[godzina].join(", ");
+                    tabelaHTML += "<tr><td>" + godzina + "</td><td>" + minuty + "</td></tr>";
+                }
+
+                tabelaHTML += "</table>";
+                document.getElementById("tabela").innerHTML = tabelaHTML;
+
+            } catch (e) {
+                alert("B³¹d podczas wczytywania pliku: " + e.message);
+            }
+        }
+
+        function setwindow() {
+            var szerokosc = 360;
+            var wysokosc = 640;
+            window.resizeTo(szerokosc, wysokosc);
+            window.moveTo(
+                (screen.availWidth - szerokosc) / 2,
+                (screen.availHeight - wysokosc) / 2
+            );
+        }
+
+        function enforceWindowSize() {
+            var szerokosc = 360;
+            var wysokosc = 640;
+
+            if (window.outerWidth !== szerokosc || window.outerHeight !== wysokosc) {
+                window.resizeTo(szerokosc, wysokosc);
+                window.moveTo(
+                    (screen.availWidth - szerokosc) / 2,
+                    (screen.availHeight - wysokosc) / 2
+                );
+            }
+        }
+
+        setInterval(enforceWindowSize, 200);
+    </script>
+    <style type="text/css">
+	
+	   @media print {
+	   
+#naglowek {
+border:0px !important;
+width:100% !important;
+display: -ms-flexbox;
+margin:auto;
+}
+
+#stop-div {
+color:#13131a !important;
+border:0px !important;
+font-weight:900 !important;
+}
+
+#inf-box {
+color:#13131a !important;
+border:0px !important;
+position:relative;
+left:5px;
+
+}
+
+#line {
+border:0px !important;
+border:1px solid #13131a !important;
+display:block;
+width:15% !important;
+}
+
+#tabela {
+position:relative;
+top:50px;
+width:70% !important;
+color:#13131a !important;
+}
+
+table {
+width:100% !important;
+}
+
+#cinf {
+display:block !important;
+position:absolute !important;
+bottom:1px !important;
+right:1px !important;
+color:#13131a !important;
+}
+
+}
+	
+ 
+	
+    body {
+    background-color:#13131a;
+    color:#d3d3d3;
+    font-family:lato;
+    margin:0;
+    }
+
+    #naglowek {
+    display:flex;
+    border-top:1px solid #13131a;
+    border-bottom:15px solid #13131a;
+    width:100%;
+    height:60px;
+    }
+
+    #line {
+        font-family: "Fira Sans", sans-serif;
+    background-color:#d3d3d3;
+    color:#13131a;
+    padding:0.5%;
+    width:30%;
+    height:63px;
+    font-size:42px;
+    font-weight:900;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    }
+
+    #direction-text {
+      font-family: "Fira Sans", sans-serif;
+      font-weight: 700;
+      font-size:14px;
+    }
+
+    #nmbr {
+    margin-top:auto;
+    margin-bottom:auto;
+    }
+
+    #inf-box {
+    border-left:4px solid #13131a;
+    width:100%;
+    }
+
+    #stop-div {
+    border-top:1px solid #d3d3d3;
+    width:100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+
+    #tabela {
+    width:100%;
+    margin:auto;
+	font-weight:900;
+	display:block;
+	border-collapse:collapse;
+    }
+	
+	
+#tabela table tr:not(:first-child) {
+    border-bottom: 1px solid #444;
+}
+
+    #tabela table tr:first-child {
+        background-color: #1e1e1e;
+        font-weight: bold;
+    }
+
+    #tabela table tr:nth-child(odd):not(:first-child) {
+        background-color: #2c2c2c;;
+    }
+
+    #tabela table tr:nth-child(even):not(:first-child) {
+        background-color: #252525;
+    }
+	
+	table {
+	width:99%;
+	margin:auto;
+	}
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body onload="setwindow(); wczytajDane();">
+    <div id="naglowek">
+    <div id="line">
+    <p id="nmbr">---</p>
+    </div>
+    <div id="inf-box">
+    <div id="direction-text">Kierunek: ---</div>
+    <div id="stop-div">
+    <a style="font-size:12px;">Przystanek:</a> <a id="stop"></a>
+    </div>
+    </div>
+    </div>
+    <div id="tabela"></div>
+	<div style="text-align:right; display:none;" id="cinf">
+	<strong><a style="font-size:18px; text-decoration:underline;">MZP Ostro³êka Sp.z.o.o</a></strong>
+	<p>Tolerancja ró¿nic wzglêdem rozk³adu a rzeczywistych odjazdów: +5, -2</p>
+	</div>
+</body>
+</html>

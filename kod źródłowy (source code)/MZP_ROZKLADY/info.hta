@@ -1,0 +1,185 @@
+
+<html>
+<head>
+  <title>MZP APP - O Aplikacji</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta charset="utf-8">
+  <HTA:APPLICATION
+    ID="MojaAplikacja"
+    APPLICATIONNAME="Moja Aplikacja"
+    BORDER="thin"
+    CAPTION="yes"
+    SHOWINTASKBAR="yes"
+    SINGLEINSTANCE="yes"
+    WINDOWSTATE="normal"
+  >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resources/font/css/fontello.css">
+    <style type="text/css">
+body {
+  background-color: #13131a;
+  color:#d3d3d3;
+  font-family: Lato;
+  margin:0;
+  overflow:none;
+}
+
+
+#close-button {
+  border: 2px solid #d3d3d3;
+  border-radius: 5px;
+  background-color: #d3d3d3;
+  color:#13131a;
+  padding: 1%;
+  width: 25%;
+  margin:auto;
+  font-weight:700;
+  cursor:pointer;
+}
+
+ #w-tbackground {
+    background-color: #d3d3d3;
+    padding: 0.5%;
+    margin:5px;
+    color:#13131a;
+  }
+
+  #header {
+    font-size: 20px;
+    font-weight: 900;
+    background-color: #13131a;
+    color:#d3d3d3;
+    padding: 0.1%;
+    width: 28%;
+  }
+
+  #table {
+    border:1.5px solid #13131a;
+    width: 99%;
+    overflow: hidden;
+  }
+
+  #table:first-child {
+    border-top:none;
+  }
+
+
+
+  .table-element {
+    background-color: #242431;
+    border-top:#13131a 1px solid;
+      border-bottom:#13131a 1px solid;
+    color:#d3d3d3;
+    width: 100%;
+    padding: 0.5% 0%;
+  }
+
+  .table-element-clog {
+       background-color: #242431;
+    border-top:#13131a 1px solid;
+      border-bottom:#13131a 1px solid;
+    color:#d3d3d3;
+    width: 100%;
+    padding: 0.5% 0%;
+  }
+
+  i {
+    font-style: normal;
+  }
+
+  a{
+    color:#d3d3d3;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color:#d3d3d3;
+    text-decoration: none;
+  }
+
+  #close-button {
+    text-align: center;
+    margin-top: 10px;
+  }
+    </style>
+
+    
+
+<script language="javascript">
+  function setwindow() {
+         var szerokosc = 522;
+         var wysokosc = 332;
+         window.resizeTo(szerokosc, wysokosc);
+         window.moveTo(
+             (screen.availWidth - szerokosc) / 2,
+             (screen.availHeight - wysokosc) / 2
+         );
+     }
+
+     function enforceWindowSize() {
+         var szerokosc = 522;
+         var wysokosc = 332;
+
+         if (window.outerWidth !== szerokosc || window.outerHeight !== wysokosc) {
+             window.resizeTo(szerokosc, wysokosc);
+             window.moveTo(
+                 (screen.availWidth - szerokosc) / 2,
+                 (screen.availHeight - wysokosc) / 2
+             );
+         }
+     }
+
+     setInterval(enforceWindowSize, 200);
+</script>
+
+</head>
+<body onload="enforceWindowSize(); setwindow()">
+<div id="w-tbackground">
+<div id="header"><i style="font-style:normal;" class="icon-info-circled">O aplikacji:</i></div>
+<div id="table">
+  <div class="table-element">
+<i class="icon-code"><a style="position:relative; left: 4px;">Wersja Aplikacji:1.3</a></i>
+  </div>
+    <div class="table-element">
+<i class="icon-doc-text"><a style="position:relative; left: 0px;">Wersja Rozkładu:27.11.2025</a></i>
+  </div>
+    <div class="table-element">
+<i class="icon-briefcase"><a style="position:relative; left: 0px;">Źródła zewnętrzne: Czytaj readme.txt</a></i>
+  </div>
+      <div class="table-element">
+<i class="icon-adult"><a style="position:relative; left: 0px;">Autor:</a><a href="https://discord.com/users/860065034327818301">Piraxu,</a><a>2025 rok</a></i>
+  </div>
+        <div class="table-element-clog">
+<i class="icon-pencil"><a style="position:relative; left: 0px;">Changelog:</a></i>
+<ul>
+ <li>02.11.2025 (1.1)</li>
+    <ul>
+      <li>Dodano linię tramwajową nr. 9</li>
+      <li>Naprawiono wygląd druku przystanków wybranej linii</li>
+    </ul>
+</ul>
+<ul>
+ <li>21.11.2025 (1.2)</li>
+    <ul>
+      <li>Zmniejszono illość skryptów .bat niezbędnych do działania aplikacji</li>
+      <li>Naprawiono wygląd druku rozkładów jazdy</li>
+      <li><a style="text-decoration: underline;">W końcu</a> Napisano <a style="text-decoration: underline; cursor: pointer;" onclick='(new ActiveXObject("WScript.Shell")).Run("cmd.exe /c start \"\" \"%CD%\\readme.txt\"", 0, false)'>readme</a></li>
+    </ul>
+    <li>27.11.2025 (1.3)</li>
+    <ul>
+      <li>Dodano mechanizm dynamicznych komunikatów</li>
+      <li>Dodano linię 54 (w relacji Szpital Uniwer. - Kozanów)</li>
+    </ul>
+</ul>
+  </div>
+</div>
+</div>
+<div onclick="window.close()" id="close-button"><i class="icon-cancel-circled">Zamknij</i></div>
+</body>
+</html>
