@@ -1,6 +1,6 @@
-==============================
+
 OFICJALNE REPOZYTORIUM MZP APP
-==============================
+
 Witaj w oficjalnym repozytorium MZP APP stworzonym w celu poprawy komfortu członków v-firmy MZP Ostrołęka w grze Nid's buses and Trams na robloxie !
 
 Spis Treści:
