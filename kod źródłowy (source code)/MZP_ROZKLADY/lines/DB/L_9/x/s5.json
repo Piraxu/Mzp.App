@@ -1,0 +1,10 @@
+{
+    "line": "9",
+    "direction": "Zaj. Warszawska",
+    "przystanek": "Mszczonów PKP",
+    "rozkład": {
+        "23": [
+            "04x"
+        ]
+    }
+}

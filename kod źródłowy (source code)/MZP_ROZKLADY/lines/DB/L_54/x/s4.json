@@ -1,0 +1,13 @@
+{
+    "line": "54",
+    "direction": "Zaj. Autobusowa",
+    "przystanek": "Mrożka (S)",
+    "rozkład": {
+        "23": [
+            "27x"
+        ],
+        "00": [
+            "06x"
+        ]
+    }
+}

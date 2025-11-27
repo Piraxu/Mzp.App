@@ -1,0 +1,13 @@
+{
+    "line": "54",
+    "direction": "Zaj. Autobusowa",
+    "przystanek": "Warszawska",
+    "rozkład": {
+        "23": [
+            "26x"
+        ],
+        "00": [
+            "05x"
+        ]
+    }
+}
