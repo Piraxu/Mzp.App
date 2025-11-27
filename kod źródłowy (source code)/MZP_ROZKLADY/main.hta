@@ -62,14 +62,14 @@ function runFile(p) {
 }
 
 function loadMsg() {
-    // Adres JSONa
+    
     var url = "https://piraxu.github.io/Mzp.App/Popup_alert.json?nocache=" + Date.now();
 
     try {
         var xhr = new ActiveXObject("MSXML2.XMLHTTP");
         xhr.open("GET", url, false);
 
-        // Anty-cache
+        
         xhr.setRequestHeader("Cache-Control", "no-cache");
         xhr.setRequestHeader("Pragma", "no-cache");
 
@@ -78,7 +78,7 @@ function loadMsg() {
         if (xhr.status == 200) {
             var data = JSON.parse(xhr.responseText);
 
-            // zakładam że JSON ma {"message": "tekst"}
+            
             if (data.content && data.content.trim() !== "") {
                 document.getElementById("msg").innerText = data.content;
                 document.getElementById("msg").style.display = "block";
@@ -86,7 +86,7 @@ function loadMsg() {
         }
     }
     catch (e) {
-        // nic nie rób jeśli błąd
+        
     }
 }
 
@@ -255,10 +255,10 @@ font-size: 20px;
 
 #popup-window {
 z-index: 99;
-  position: fixed;      /* pozycja zależy od okna, nie od DIVa */
+  position: fixed;      
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* perfekcyjne centrowanie */
+  transform: translate(-50%, -50%); 
   background-color: #d3d3d3;
   width: 50%;
   color:#13131a;
@@ -353,3 +353,4 @@ user-select: none;
   </div>
 </body>
 </html>
+
