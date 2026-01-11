@@ -9,7 +9,7 @@ Spis treści:
 
 1.) Cel readme 
 
-    • Celem tego radme jest przedstawienie dla bardziej ciekawskich użytkowników sposób w jaki 
+    • Celem tego readme jest przedstawienie dla bardziej ciekawskich użytkowników sposób w jaki 
       "aplikacja" MZP APP używa tego repozytorium do swojego działania w zakresie aktualizacji. 
 
 2.) Co znajduje się w repozytorium ?
@@ -39,5 +39,6 @@ Spis treści:
       Jeśli odpowie że nie, to zwyczajnie skrypt się zamknie a użytkownik będzie mógł włączyć aplikacje
       ponownie kiedy będzie miał ochotę. Jeśli jednak odpowie że tak, skrypt się zamknie poprzedzając
       to uruchomieniem aplikacji. 
+
 
       
